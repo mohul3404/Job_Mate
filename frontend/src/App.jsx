@@ -39,7 +39,7 @@ const App = () => {
     };
 
     fetchUser();
-  }, [isAuthorized]); // ✅ IMPORTANT
+  }, []); // ✅ IMPORTANT
 
   return (
     <BrowserRouter>
