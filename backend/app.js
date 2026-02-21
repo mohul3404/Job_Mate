@@ -13,7 +13,7 @@ const app = express();
 config({ path: "./config/config.env" });
 
 app.use(cors({
-  origin: "https://job-mate-kappa.vercel.app",
+  origin: process.env.FRONTEND_URL,
   credentials: true,
 }));
 

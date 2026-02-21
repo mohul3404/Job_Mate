@@ -1324,6 +1324,7 @@ nav .hamburger {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9999;
 }
 .resume-modal .modal-content {
   width: 100%;
