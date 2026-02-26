@@ -25,9 +25,7 @@ const App = () => {
       try {
         const { data } = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/getuser`,
-          {
-            withCredentials: true,
-          }
+          { withCredentials: true }
         );
 
         setUser(data.user);
@@ -39,7 +37,7 @@ const App = () => {
     };
 
     fetchUser();
-  }, []); // ✅ IMPORTANT
+  }, []);
 
   return (
     <BrowserRouter>
@@ -57,11 +55,14 @@ const App = () => {
         />
 
         <Route path="/" element={<Home />} />
-        <Route path="/job/getall" element={<Jobs />} />
+
+        {/* ✅ CLEAN JOB ROUTE */}
+        <Route path="/jobs" element={<Jobs />} />
+
         <Route path="/job/:id" element={<JobDetails />} />
         <Route path="/application/:id" element={<Application />} />
         <Route path="/applications/me" element={<MyApplications />} />
-        <Route path="/job/post" element={<PostJob />} />
+        <Route path="/post/job" element={<PostJob />} />
         <Route path="/job/me" element={<MyJobs />} />
 
         <Route path="*" element={<NotFound />} />

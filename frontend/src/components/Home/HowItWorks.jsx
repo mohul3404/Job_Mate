@@ -15,7 +15,7 @@ const HowItWorks = () => {
         <h3>How Career Connect Works !</h3>
 
         <div className="banner">
-          
+
           {/* Create Account */}
           <div
             className="card"
@@ -25,12 +25,11 @@ const HowItWorks = () => {
             <FaUserPlus />
             <p>Create Account</p>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur, culpa.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
           </div>
 
-          {/* Find / Post Job */}
+          {/* Find or Post Job */}
           <div
             className="card"
             onClick={() =>
@@ -41,8 +40,7 @@ const HowItWorks = () => {
             <MdFindInPage />
             <p>Find a Job/Post a Job</p>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur, culpa.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
           </div>
 
@@ -55,8 +53,7 @@ const HowItWorks = () => {
             <IoMdSend />
             <p>Apply For Job/Recruit Suitable Candidates</p>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur, culpa.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
           </div>
 
