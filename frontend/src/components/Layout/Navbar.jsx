@@ -15,18 +15,14 @@ const Navbar = () => {
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/logout`,
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
 
       toast.success(data.message);
-
       setUser({});
       setIsAuthorized(false);
-
       navigateTo("/login");
-    } catch (error) {
+    } catch {
       toast.error("Logout failed");
     }
   };
@@ -35,7 +31,9 @@ const Navbar = () => {
     <nav className={isAuthorized ? "navbarShow" : "navbarHide"}>
       <div className="container">
         <div className="logo">
-          <img src="/careerconnect-white.png" alt="logo" />
+          <Link to="/" onClick={() => setShow(false)}>
+            <img src="/careerconnect-white.png" alt="logo" />
+          </Link>
         </div>
 
         <ul className={!show ? "menu" : "show-menu menu"}>
@@ -43,31 +41,44 @@ const Navbar = () => {
             <Link to="/" onClick={() => setShow(false)}>HOME</Link>
           </li>
 
-          <li>
-            <Link to="/job/getall" onClick={() => setShow(false)}>ALL JOBS</Link>
-          </li>
-
-          <li>
-            <Link to="/applications/me" onClick={() => setShow(false)}>
-              {user?.role === "Employer"
-                ? "APPLICANT'S APPLICATIONS"
-                : "MY APPLICATIONS"}
-            </Link>
-          </li>
-
-          {user?.role === "Employer" && (
+          {/* Job Seeker Menu */}
+          {user?.role === "Job Seeker" && (
             <>
               <li>
-                <Link to="/job/post" onClick={() => setShow(false)}>POST NEW JOB</Link>
+                <Link to="/jobs" onClick={() => setShow(false)}>ALL JOBS</Link>
               </li>
-
               <li>
-                <Link to="/job/me" onClick={() => setShow(false)}>VIEW YOUR JOBS</Link>
+                <Link to="/applications/me" onClick={() => setShow(false)}>
+                  MY APPLICATIONS
+                </Link>
               </li>
             </>
           )}
 
-          <button onClick={handleLogout}>LOGOUT</button>
+          {/* Employer Menu */}
+          {user?.role === "Employer" && (
+            <>
+              <li>
+                <Link to="/post/job" onClick={() => setShow(false)}>
+                  POST JOB
+                </Link>
+              </li>
+              <li>
+                <Link to="/job/me" onClick={() => setShow(false)}>
+                  MY JOBS
+                </Link>
+              </li>
+              <li>
+                <Link to="/applications/me" onClick={() => setShow(false)}>
+                  APPLICANTS
+                </Link>
+              </li>
+            </>
+          )}
+
+          {isAuthorized && (
+            <button onClick={handleLogout}>LOGOUT</button>
+          )}
         </ul>
 
         <div className="hamburger" onClick={() => setShow(!show)}>
